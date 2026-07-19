@@ -14,3 +14,25 @@ class Database:
                                     amount REAL
                                     )""")
         self.connection.commit()
+    
+    def add_expense(self, amount):
+        self.cursor.execute("""
+                    INSERT INTO transactions(transaction_type, amount)
+                    VALUES (?, ?)""",("expense",amount))
+        
+        self.connection.commit()
+        
+    def add_income(self,amount):
+        self.cursor.execute("""
+                            INSERT INTO transactions(transaction_type,amount)
+                            VALUES (?, ?)""",("income",amount))
+        self.connection.commit()
+        
+    
+def delete_transaction(self,index):
+        self.cursor.execute("""
+                            DELETE FROM transactions
+                            WHERE id = ?;
+                            """,(index,))
+        
+        self.connection.commit()
