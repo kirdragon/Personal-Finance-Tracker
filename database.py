@@ -29,3 +29,14 @@ class Database:
                             """,(index,))
         
         self.connection.commit()
+        
+    def show_transactions(self):
+        self.cursor.execute("""
+                            SELECT * FROM transactions;
+                            """)
+        rows = self.cursor.fetchall()
+        
+        return rows
+    
+    def close(self):
+        self.connection.close()
