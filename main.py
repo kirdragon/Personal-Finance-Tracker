@@ -1,0 +1,31 @@
+from finance_manager import Manager
+manager = Manager()
+
+while True:
+    print("\n1. Добавить операцию\n"
+          "2. Удалить операцию\n"
+          "3. Посмотреть операции\n"
+          "4. Выйти из программы\n")
+    choice_main = int(input("Действие: "))
+    
+    if choice_main == 1:
+        while True:
+            print ("\n1 - Добавить доход\n"
+                "2 - Добавить Расход\n"
+                "3 - Выйти назад в главное меню\n")
+            choice_1 = int(input("Выбор: "))
+            if choice_1 == 1:
+                amount = input("Введите сумму: ")
+                manager.income(amount)
+            
+            elif choice_1 == 2:
+                amount = input("Введите сумму: ")
+                manager.expense(amount)
+            
+            elif choice_1 == 3:
+                break
+            
+            else:
+                print("\nВыберите только числа от 1 до 3!")
+                pass
+            
