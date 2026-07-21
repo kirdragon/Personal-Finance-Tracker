@@ -7,14 +7,14 @@ class Manager:
         
     def income(self, amount):
         transaction = Transaction("income",amount)
-        self.database.add_income(transaction)
+        self.database.add_transaction(transaction)
         
     def expense(self,amount):
         transaction = Transaction("expense",amount)
-        self.database.add_expense(transaction)
+        self.database.add_transaction(transaction)
         
     def delete(self,index):
         self.database.delete_transaction(index)
         
     def show(self):
-        self.database.show_transactions()
+        return self.database.show_transactions()
