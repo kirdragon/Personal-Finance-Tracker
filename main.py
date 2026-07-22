@@ -7,9 +7,9 @@ while True:
           "3. Посмотреть операции\n"
           "4. Выйти из программы\n")
     choice_main = int(input("Действие: "))
-
+    print("")
     if choice_main == 1:
-        print ("\n1 - Добавить доход\n"
+        print ("1 - Добавить доход\n"
         "2 - Добавить Расход\n"
         "3 - Выйти назад в главное меню\n")
         
@@ -35,7 +35,7 @@ while True:
     elif choice_main == 3:
         transactions = manager.show()
         for transaction in transactions:
-            print (transaction)
+            print (f"id - {transaction[0]} | type - {transaction[1]} | amount - {transaction[2]}")
     elif choice_main == 4:
         print("\nВыход из программы...\n")
         break    
