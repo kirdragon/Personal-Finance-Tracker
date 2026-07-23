@@ -38,5 +38,16 @@ class Database:
         
         return rows
     
+    def transaction_exists(self,id):
+        self.cursor.execute("""
+                            SELECT * FROM transactions
+                            WHERE id = ?;
+                            """,(id,))
+        if self.cursor.fetchall():
+            return True
+        else:
+            return False
+    def change_transaction(self,id,type,amount):
+        
     def close(self):
         self.connection.close()
