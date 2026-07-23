@@ -47,7 +47,12 @@ class Database:
             return True
         else:
             return False
-    def change_transaction(self,id,type,amount):
-        
+    def change_transaction(self,id, type,amount):
+        self.cursor.execute("""
+                            UPDATE transactions
+                            SET transaction_type = ?,
+                                amount = ?
+                            WHERE id = ?;
+                            """,(type,amount,id))
     def close(self):
         self.connection.close()
