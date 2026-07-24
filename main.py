@@ -55,15 +55,15 @@ while True:
         clear_show()
     elif choice_main == 4:
         id = int(input("Введите id операции: "))
-        while id == -1 or not manager.database.transaction_exists(id):
-            if id == -1:
-                break
+        while id != -1 and not manager.database.transaction_exists(id):
+            print("\nОшибка! Операции с таким id не существует!")
             clear_show()
-            id = int(input("\nОшибка! Операции с таким id не существует!\nДля изменение впишите существующий id или впишите -1 для выхода в главное меню: "))
-        type = input("Введите новый тип операции: ")
-        amount = float(input("Введите новую сумму: "))
-        manager.change_operation(id,type,amount)
-        print("Операция успешно изменена! ")    
+            id = int(input("\nДля изменение впишите существующий id или впишите -1 для выхода в главное меню: "))
+        if id != -1:
+            type = input("Введите новый тип операции: ")
+            amount = float(input("Введите новую сумму: "))
+            manager.change_operation(id,type,amount)
+            print("Операция успешно изменена! ")    
     elif choice_main == 5:
         print("\nВыход из программы...\n")
         break    
