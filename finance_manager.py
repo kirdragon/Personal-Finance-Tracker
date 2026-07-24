@@ -18,3 +18,6 @@ class Manager:
         
     def show(self):
         return self.database.show_transactions()
+    
+    def show_balance(self):
+        return self.database.get_balance()

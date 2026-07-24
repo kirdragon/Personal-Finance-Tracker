@@ -5,6 +5,9 @@ def clear_show():
     print("Список операций: \n")
     for transaction in transactions:
         print (f"id - {transaction[0]} | type - {transaction[1]} | amount - {transaction[2]}")
+def show_main_balance():
+    balance = manager.show_balance()
+    print(f"Баланс: {balance}")
 
 print("\nДобро пожаловать в трекер задач!")
 while True:
@@ -12,10 +15,11 @@ while True:
           "2. Удалить операцию\n"
           "3. Посмотреть операции\n"
           "4. Изменить операцию\n"
-          "5. Выйти из программы\n")
+          "5. Посмотреть баланс\n"
+          "6. Выйти из программы\n")
     choice_main = int(input("Действие: "))
     print("")
-    if choice_main not in (1,2,3,4):
+    if choice_main not in (1,2,3,4,5,6):
         print("Выберите только числа от 1 до 4!")
     if choice_main == 1:
         print ("1 - Добавить доход\n"
@@ -53,6 +57,7 @@ while True:
         
     elif choice_main == 3:
         clear_show()
+        show_main_balance()
     elif choice_main == 4:
         id = int(input("Введите id операции: "))
         while id != -1 and not manager.database.transaction_exists(id):
@@ -63,7 +68,9 @@ while True:
             type = input("Введите новый тип операции: ")
             amount = float(input("Введите новую сумму: "))
             manager.change_operation(id,type,amount)
-            print("Операция успешно изменена! ")    
+            print("Операция успешно изменена! ")
     elif choice_main == 5:
+        show_main_balance()
+    elif choice_main == 6:
         print("\nВыход из программы...\n")
         break    

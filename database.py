@@ -56,3 +56,16 @@ class Database:
                             """,(type,amount,id))
     def close(self):
         self.connection.close()
+    
+    def get_balance(self):
+        self.cursor.execute("""
+                            SELECT
+                                SUM(
+                                    CASE
+                                        WHEN  transaction_type = "income" THEN amount
+                                        WHEN  transaction_type = "expense" THEN -amount 
+                                    END) 
+                            FROM transactions;
+                            """)
+        balance = self.cursor.fetchone()[0]
+        return balance
